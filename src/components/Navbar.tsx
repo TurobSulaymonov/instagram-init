@@ -53,7 +53,7 @@ const menu = [
                  {user && (
                        <li>
                        <Link href={`/user/${user.username}`}></Link>
-                        <Avatar image={user.image} /> 
+                        <Avatar image={user.image} size="small" highlight /> 
                    </li>
                  )}
                  <li>
