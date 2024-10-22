@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { ClientSafeProvider, signIn } from "next-auth/react";
-import ColorButton from "./ui/ColorButton";
+import { ClientSafeProvider, signIn } from 'next-auth/react';
+import ColorButton from './ui/ColorButton';
 
-export type Props = {
- providers: Record<string, ClientSafeProvider>
- callbackUrl: string;
-}
-export default function Signin({providers, callbackUrl}: Props){
-    return(
+type Props = {
+  providers: Record<string, ClientSafeProvider>;
+  callbackUrl: string;
+};
+export default function Signin({ providers, callbackUrl }: Props) {
+  return (
     <>
-    {Object.values(providers).map(({name, id}) => (
-     <ColorButton 
-     key={id}
-     text={`Sign In wwith ${name}`}
-     onClick={() => signIn(id, { callbackUrl })}
-     size="big"
-     />
-    ))}
+      {Object.values(providers).map(({ name, id }) => (
+        <ColorButton
+          key={id}
+          text={`Sign In with ${name}`}
+          onClick={() => signIn(id, { callbackUrl })}
+          size='big'
+        />
+      ))}
     </>
-   ) ;
+  );
 }

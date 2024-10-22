@@ -1,18 +1,22 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import {defineConfig, isDev} from 'sanity'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import {deskTool} from 'sanity/desk'
+import {schemaTypes} from './schemas'
+import {getStartedPlugin} from './plugins/sanity-plugin-tutorial'
+
+const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
   name: 'default',
-  title: 'inistagram-init',
+  title: 'salmon-dotterel',
 
-  projectId: 'ssq8bj69',
+  projectId: 'm5fbywpb',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
 
   schema: {
     types: schemaTypes,
   },
 })
+
